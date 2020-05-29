@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -48,6 +49,7 @@ const QuestionCard = ({
     hasVoted,
   },
 }) => {
+  const history = useHistory();
   const totalVotes = optionOneVotes.length + optionTwoVotes.length;
   const percentage = (num, total) => {
     return (num / total) * 100;
@@ -73,7 +75,12 @@ const QuestionCard = ({
           <Typography variant="subtitle2" color="textSecondary">
             ...{optionOneText}...
           </Typography>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => history.push(`/question/${id}`)}
+            linkButton={true}
+          >
             View Pool
           </Button>
         </CardContent>
