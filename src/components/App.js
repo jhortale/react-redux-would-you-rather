@@ -1,7 +1,5 @@
 import React, { useEffect, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import LoadingBar from "react-redux-loading";
 
 import { handleInitialData } from "../actions/shared";
 
@@ -11,7 +9,7 @@ import Login from "./Login";
 const App = ({ dispatch, loading, questions }) => {
   useEffect(() => {
     dispatch(handleInitialData());
-  }, [loading, questions]);
+  }, [loading, dispatch, questions]);
   return <Fragment>{loading ? <Login /> : <Dashboard />}</Fragment>;
 };
 

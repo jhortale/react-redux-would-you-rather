@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -52,21 +52,18 @@ const BorderLinearProgress = withStyles((theme) => ({
 
 const Answered = (props) => {
   const {
-    id,
     avatar,
     name,
     optionOneText,
     optionOneVotes,
     optionTwoText,
     optionTwoVotes,
-    hasVoted,
   } = props.question;
   const totalVotes = optionOneVotes.length + optionTwoVotes.length;
   const percentage = (num, total) => {
     return (num / total) * 100;
   };
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Card className={classes.root}>
@@ -81,20 +78,20 @@ const Answered = (props) => {
           </Typography>
           <Typography variant="subtitle2" color="textSecondary">
             Would you rather {optionOneText}?
-            <BorderLinearProgress
-              variant="determinate"
-              value={percentage(optionOneVotes.length, totalVotes)}
-            />
-            {`${optionOneVotes.length} out of ${totalVotes}`}
           </Typography>
+          <BorderLinearProgress
+            variant="determinate"
+            value={percentage(optionOneVotes.length, totalVotes)}
+          />
+          {`${optionOneVotes.length} out of ${totalVotes}`}
           <Typography variant="subtitle2" color="textSecondary">
             Would you rather{optionTwoText}?
-            <BorderLinearProgress
-              variant="determinate"
-              value={percentage(optionTwoVotes.length, totalVotes)}
-            />
-            {`${optionTwoVotes.length} out of ${totalVotes}`}
           </Typography>
+          <BorderLinearProgress
+            variant="determinate"
+            value={percentage(optionTwoVotes.length, totalVotes)}
+          />
+          {`${optionTwoVotes.length} out of ${totalVotes}`}
         </CardContent>
       </div>
     </Card>

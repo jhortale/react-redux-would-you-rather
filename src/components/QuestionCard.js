@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -37,25 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QuestionCard = ({
-  question: {
-    id,
-    avatar,
-    name,
-    optionOneText,
-    optionOneVotes,
-    optionTwoText,
-    optionTwoVotes,
-    hasVoted,
-  },
-}) => {
+const QuestionCard = ({ question: { id, avatar, name, optionOneText } }) => {
   const history = useHistory();
-  const totalVotes = optionOneVotes.length + optionTwoVotes.length;
-  const percentage = (num, total) => {
-    return (num / total) * 100;
-  };
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Card className={classes.root}>

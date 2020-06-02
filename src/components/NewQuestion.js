@@ -56,7 +56,6 @@ const NewQuestion = ({ dispatch }) => {
   };
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root}>
@@ -78,7 +77,9 @@ const NewQuestion = ({ dispatch }) => {
           onSubmit={handleSubmit}
         >
           <FormControl fullWidth className={classes.margin} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-option-one">
+              Option One
+            </InputLabel>
             <OutlinedInput
               id="optionOneText"
               name="optionOneText"
@@ -95,7 +96,9 @@ const NewQuestion = ({ dispatch }) => {
             OR
           </Typography>
           <FormControl fullWidth className={classes.margin} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-option-two">
+              Option Two
+            </InputLabel>
             <OutlinedInput
               id="optionTwoText"
               name="optionTwoText"

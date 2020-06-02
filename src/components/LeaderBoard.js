@@ -1,37 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import SwipeableViews from "react-swipeable-views";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 import LeaderCard from "./LeaderCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    //backgroundColor: theme.palette.background.paper,
-    // width: 100
     flexGrow: 1,
   },
 }));
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-// paper: {
-//   padding: theme.spacing(2),
-//   textAlign: 'center',
-//   color: theme.palette.text.secondary,
-// },
-// }));
-
 const LeaderBoard = ({ usersByScore }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <div className={classes.root}>
