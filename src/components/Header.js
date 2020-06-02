@@ -7,7 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { setAuthedUser } from "../actions/authedUser";
+import { logout } from "../actions/authedUser";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -50,7 +50,7 @@ const Header = ({ sections, title, dispatch, name }) => {
           {title}
         </Typography>
         <Button
-          onClick={() => dispatch(setAuthedUser(null))}
+          onClick={() => dispatch(logout())}
           variant="outlined"
           size="small"
         >

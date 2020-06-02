@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import { setAuthedUser } from "../actions/authedUser";
+import { login } from "../actions/authedUser";
 
 import {
   Avatar,
@@ -47,7 +47,7 @@ function Login({ dispatch, userIds, users }) {
   const [authUser, setAuthUser] = useState(null);
 
   useEffect(() => {
-    dispatch(setAuthedUser(authUser));
+    dispatch(login(authUser));
   }, [authUser, dispatch]);
 
   const handleLogin = (e) => {

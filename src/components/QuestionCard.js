@@ -74,7 +74,6 @@ const QuestionCard = ({ question: { id, avatar, name, optionOneText } }) => {
 
 const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
   const question = questions[id];
-  console.log("MapStaTe: ", question);
   return {
     question: formatQuestion(question, users[question.author], authedUser),
   };
