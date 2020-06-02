@@ -89,7 +89,12 @@ const Unanswered = ({
                   label={optionTwoText}
                 />
               </RadioGroup>
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                disabled={value.answer === ""}
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
                 Submit
               </Button>
             </FormControl>

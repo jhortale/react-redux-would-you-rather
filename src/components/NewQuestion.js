@@ -111,7 +111,17 @@ const NewQuestion = ({ dispatch }) => {
               labelWidth={60}
             />
           </FormControl>
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            disabled={
+              questions.optionOneText.length >= 3 &&
+              questions.optionTwoText.length >= 3
+                ? false
+                : true
+            }
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
             Submit
           </Button>
         </form>
