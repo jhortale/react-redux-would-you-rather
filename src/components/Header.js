@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -28,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = ({ sections, title, dispatch, name }) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/");
+  };
 
   return (
     <Fragment>
@@ -49,11 +55,7 @@ const Header = ({ sections, title, dispatch, name }) => {
         >
           {title}
         </Typography>
-        <Button
-          onClick={() => dispatch(logout())}
-          variant="outlined"
-          size="small"
-        >
+        <Button onClick={handleLogout} variant="outlined" size="small">
           Logout
         </Button>
       </Toolbar>
