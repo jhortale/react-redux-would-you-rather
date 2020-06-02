@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import { formatQuestion } from "../utils/helpers";
 
@@ -36,6 +35,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const BorderLinearProgress = withStyles((theme) => ({
+  root: {
+    height: 10,
+    borderRadius: 5,
+  },
+  colorPrimary: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
+  },
+  bar: {
+    borderRadius: 5,
+    backgroundColor: "#1a90ff",
+  },
+}))(LinearProgress);
+
 const Answered = (props) => {
   const {
     id,
@@ -56,25 +70,31 @@ const Answered = (props) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
-        title="Live from space album cover"
-      />
+      <CardMedia className={classes.cover} image={avatar} title="Avatar" />
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography component="h5" variant="h5">
             {name} Asks:
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
-            Would you rather...
+            Results:
           </Typography>
           <Typography variant="subtitle2" color="textSecondary">
-            ...{optionOneText}...
+            Would you rather {optionOneText}?
+            <BorderLinearProgress
+              variant="determinate"
+              value={percentage(optionOneVotes.length, totalVotes)}
+            />
+            {`${optionOneVotes.length} out of ${totalVotes}`}
           </Typography>
-          <Button variant="contained" color="primary">
-            View Pool
-          </Button>
+          <Typography variant="subtitle2" color="textSecondary">
+            Would you rather{optionTwoText}?
+            <BorderLinearProgress
+              variant="determinate"
+              value={percentage(optionTwoVotes.length, totalVotes)}
+            />
+            {`${optionTwoVotes.length} out of ${totalVotes}`}
+          </Typography>
         </CardContent>
       </div>
     </Card>

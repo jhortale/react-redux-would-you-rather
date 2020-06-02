@@ -61,7 +61,7 @@ const QuestionCard = ({
     <Card className={classes.root}>
       <CardMedia
         className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
+        image={avatar}
         title="Live from space album cover"
       />
       <div className={classes.details}>

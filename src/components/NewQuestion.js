@@ -1,75 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Button from "@material-ui/core/Button";
+import {
+  Card,
+  CardContent,
+  Button,
+  Typography,
+  OutlinedInput,
+  InputLabel,
+  InputAdornment,
+  FormControl,
+} from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+import { handleAddQuestion } from "../actions/questions";
+
+const useStyles = makeStyles({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
+    minWidth: 275,
   },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
   },
-}));
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
-export default function NewQuestion() {
+const initialValue = {
+  optionOneText: "",
+  optionTwoText: "",
+};
+
+const NewQuestion = ({ dispatch }) => {
+  const [questions, setQuestions] = useState(initialValue);
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setQuestions({ ...questions, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(handleAddQuestion(questions));
+    setQuestions(initialValue);
+    history.push("/");
+  };
+
   const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <div className={classes.paper}>
-      <Paper elevation={3}>
-        <Typography variant="h6" gutterBottom>
-          Shipping address
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
+          Create New Question
         </Typography>
-        <form className={classes.root} noValidate autoComplete="off">
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                required
-                id="optionOne"
-                name="optionOne"
-                label="Option One"
-                fullWidth
-                autoComplete="option-one"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                length={255}
-                id="optionTwo"
-                name="optionTwo"
-                label="Option Two"
-                fullWidth
-                autoComplete="option-two"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="contained" color="primary">
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
+        <Typography variant="h5" component="h2">
+          Would You Rather...
+        </Typography>
+        <form
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          <FormControl fullWidth className={classes.margin} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+            <OutlinedInput
+              id="optionOneText"
+              name="optionOneText"
+              label="Option One"
+              onChange={(e) => handleChange(e)}
+              value={questions.optionOneText}
+              startAdornment={
+                <InputAdornment position="start">...</InputAdornment>
+              }
+              labelWidth={60}
+            />
+          </FormControl>
+          <Typography variant="h5" component="h2">
+            OR
+          </Typography>
+          <FormControl fullWidth className={classes.margin} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+            <OutlinedInput
+              id="optionTwoText"
+              name="optionTwoText"
+              label="Option Two"
+              onChange={(e) => handleChange(e)}
+              value={questions.optionTwoText}
+              startAdornment={
+                <InputAdornment position="start">...</InputAdornment>
+              }
+              labelWidth={60}
+            />
+          </FormControl>
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
         </form>
-      </Paper>
-    </div>
+      </CardContent>
+    </Card>
   );
-}
+};
+
+export default connect()(NewQuestion);

@@ -37,15 +37,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LeaderCard = (props) => {
-  const { name, score, numQuestions, numAnswers } = props;
+  console.log(props);
+  const { name, avatar, score, numQuestions, numAnswers } = props;
   const classes = useStyles();
   const theme = useTheme();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} spacing={3}>
       <CardMedia
         className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
+        image={avatar}
         title="Live from space album cover"
       />
       <div className={classes.details}>

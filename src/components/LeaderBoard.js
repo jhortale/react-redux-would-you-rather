@@ -6,15 +6,28 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 
 import LeaderCard from "./LeaderCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
+    //backgroundColor: theme.palette.background.paper,
+    // width: 100
+    flexGrow: 1,
   },
 }));
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+// paper: {
+//   padding: theme.spacing(2),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// },
+// }));
 
 const LeaderBoard = ({ usersByScore }) => {
   const classes = useStyles();
@@ -22,17 +35,25 @@ const LeaderBoard = ({ usersByScore }) => {
 
   return (
     <div className={classes.root}>
-      <h1>Leaderboard</h1>
-      {usersByScore.map((user) => (
-        <LeaderCard
-          key={user.id}
-          id={user.id}
-          name={user.name}
-          score={user.score}
-          numQuestions={user.numQuestions}
-          numAnswers={user.numAnswers}
-        />
-      ))}
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <h1>Leaderboard</h1>
+        </Grid>
+
+        {usersByScore.map((user, index) => (
+          <Grid item xs={12} key={index}>
+            <LeaderCard
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              avatar={user.avatarURL}
+              score={user.score}
+              numQuestions={user.numQuestions}
+              numAnswers={user.numAnswers}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };

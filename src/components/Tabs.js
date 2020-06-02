@@ -8,6 +8,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 
 import QuestionCard from "./QuestionCard";
 
@@ -46,8 +47,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
+    flexGrow: 1,
   },
 }));
 
@@ -85,14 +85,22 @@ const FullWidthTabs = ({ votedIds, unvotedIds }) => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          {unvotedIds.map((id) => (
-            <QuestionCard key={id} id={id} />
-          ))}
+          <Grid container spacing={2}>
+            {unvotedIds.map((id, index) => (
+              <Grid item xs={12} key={index}>
+                <QuestionCard key={id} id={id} />
+              </Grid>
+            ))}
+          </Grid>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          {votedIds.map((id) => (
-            <QuestionCard key={id} id={id} />
-          ))}
+          <Grid container spacing={2}>
+            {votedIds.map((id, index) => (
+              <Grid item xs={12} key={index}>
+                <QuestionCard key={id} id={id} />
+              </Grid>
+            ))}
+          </Grid>
         </TabPanel>
       </SwipeableViews>
     </div>

@@ -39,7 +39,6 @@ const Header = ({ sections, title, dispatch, name }) => {
           component="h2"
           variant="body2"
           color="inherit"
-          noWrap
           className={classes.toolbarLink}
         >
           Welcome, {name}
@@ -49,7 +48,6 @@ const Header = ({ sections, title, dispatch, name }) => {
           variant="h5"
           color="inherit"
           align="center"
-          noWrap
           className={classes.toolbarTitle}
         >
           {title}
@@ -70,7 +68,6 @@ const Header = ({ sections, title, dispatch, name }) => {
         {sections.map((section) => (
           <Link
             color="inherit"
-            noWrap
             key={section.title}
             variant="body2"
             to={section.url}
