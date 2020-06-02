@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
-
+import LoadingBar from "react-redux-loading";
 import { handleInitialData } from "../actions/shared";
 
 import Dashboard from "./Dashboard";
@@ -10,7 +10,12 @@ const App = ({ dispatch, loading, questions }) => {
   useEffect(() => {
     dispatch(handleInitialData());
   }, [loading, dispatch, questions]);
-  return <Fragment>{loading ? <Login /> : <Dashboard />}</Fragment>;
+  return (
+    <Fragment>
+      <LoadingBar />
+      {loading ? <Login /> : <Dashboard />}
+    </Fragment>
+  );
 };
 
 const mapStateToProps = ({ authedUser }) => {

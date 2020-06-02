@@ -61,7 +61,7 @@ const QuestionCard = ({ question: { id, avatar, name, optionOneText } }) => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => history.push(`/question/${id}`)}
+            onClick={() => history.push(`/questions/${id}`)}
             linkButton={true}
           >
             View Pool

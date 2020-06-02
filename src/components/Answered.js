@@ -52,13 +52,17 @@ const BorderLinearProgress = withStyles((theme) => ({
 
 const Answered = (props) => {
   const {
-    avatar,
-    name,
-    optionOneText,
-    optionOneVotes,
-    optionTwoText,
-    optionTwoVotes,
-  } = props.question;
+    question: {
+      avatar,
+      name,
+      optionOneText,
+      optionOneVotes,
+      optionTwoText,
+      optionTwoVotes,
+    },
+    authedUser,
+  } = props;
+  console.log(authedUser, optionOneVotes, optionTwoVotes);
   const totalVotes = optionOneVotes.length + optionTwoVotes.length;
   const percentage = (num, total) => {
     return (num / total) * 100;
@@ -77,6 +81,7 @@ const Answered = (props) => {
             Results:
           </Typography>
           <Typography variant="subtitle2" color="textSecondary">
+            {optionOneVotes.includes(authedUser) && "(Your Vote): "}
             Would you rather {optionOneText}?
           </Typography>
           <BorderLinearProgress
@@ -85,6 +90,7 @@ const Answered = (props) => {
           />
           {`${optionOneVotes.length} out of ${totalVotes}`}
           <Typography variant="subtitle2" color="textSecondary">
+            {optionTwoVotes.includes(authedUser) && "(Your Vote): "}
             Would you rather{optionTwoText}?
           </Typography>
           <BorderLinearProgress
@@ -102,6 +108,7 @@ const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
   const question = questions[id];
   return {
     question: formatQuestion(question, users[question.author], authedUser),
+    authedUser,
   };
 };
 

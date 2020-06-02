@@ -7,7 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { logout } from "../actions/authedUser";
+import { logout } from "../../actions/authedUser";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
