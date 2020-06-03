@@ -14,7 +14,7 @@ import {
   FormControl,
 } from "@material-ui/core";
 
-import { handleAddQuestion } from "../actions/questions";
+import { handleAddQuestion } from "../../actions/questions";
 
 const useStyles = makeStyles({
   root: {

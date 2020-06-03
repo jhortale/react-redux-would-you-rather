@@ -5,10 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-import { formatQuestion } from "../utils/helpers";
+import { formatQuestion } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,15 +48,9 @@ const QuestionCard = ({ question: { id, avatar, name, optionOneText } }) => {
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            {name} Asks:
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Would you rather...
-          </Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            ...{optionOneText}...
-          </Typography>
+          <p>{name} Asks:</p>
+          <p>Would you rather...</p>
+          <p>...{optionOneText}...</p>
           <Button
             variant="contained"
             color="primary"

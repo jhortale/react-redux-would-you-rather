@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,18 +45,16 @@ const LeaderCard = (props) => {
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            {name}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Questions: {numQuestions}
-          </Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            Answers: {numAnswers}
-          </Typography>
+          <p>{name}</p>
+
+          <p>Questions: {numQuestions}</p>
+
+          <p>Answers: {numAnswers}</p>
         </CardContent>
       </div>
-      <div>Score: {score}</div>
+      <div>
+        <p>Score: {score}</p>
+      </div>
     </Card>
   );
 };

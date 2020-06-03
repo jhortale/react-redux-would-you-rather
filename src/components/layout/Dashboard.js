@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import Header from "./layout/Header";
-import Tabs from "./Tabs.js";
-import NewQuestion from "./NewQuestion";
-import LeaderBoard from "./LeaderBoard";
-import Question from "./Question.js";
-import NotFound from "./NotFound";
+import Header from "./Header";
+import Tabs from "../questions/Tabs.js";
+import NewQuestion from "../questions/NewQuestion";
+import LeaderBoard from "../leaderboard/LeaderBoard";
+import Question from "../questions/Question.js";
+import NotFound from "../NotFound";
 
 const sections = [
   { title: "Home", url: "/" },
@@ -15,7 +15,10 @@ const sections = [
   { title: "LeaderBoard", url: "/leaderboard" },
 ];
 
-const Dashboard = (props) => {
+const Dashboard = ({ loading }) => {
+  if (!loading) {
+    return <Redirect to="/" />;
+  }
   return (
     <Fragment>
       <Router>
@@ -36,10 +39,10 @@ const Dashboard = (props) => {
   );
 };
 
-// const mapStateToProps = ({ questions }) => {
-//   return {
-//     questions,
-//   };
-// };
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    loading: authedUser === null,
+  };
+};
 
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-import { login } from "../actions/authedUser";
+import { login } from "../../actions/authedUser";
 
 import {
   Avatar,
@@ -43,19 +44,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login({ dispatch, userIds, users }) {
+function Login(props) {
+  const { dispatch, userIds, users, loading } = props;
   const [authUser, setAuthUser] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(login(authUser));
-  }, [authUser, dispatch]);
+  }, [dispatch, authUser]);
 
   const handleLogin = (e) => {
     e.preventDefault();
     setAuthUser(e.target.value);
+    //
   };
   const classes = useStyles();
-
+  if (!loading) {
+    history.push("/dashboard");
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -90,10 +96,11 @@ function Login({ dispatch, userIds, users }) {
   );
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, authedUser }) => {
   return {
     userIds: Object.keys(users).sort(),
     users,
+    loading: authedUser === null,
   };
 };
 

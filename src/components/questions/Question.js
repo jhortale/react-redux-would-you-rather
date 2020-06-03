@@ -2,8 +2,8 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import Answered from "./Answered";
 import Unanswered from "./Unanswered";
-import { formatQuestion } from "../utils/helpers";
-import { handleInitialData } from "../actions/shared";
+import { formatQuestion } from "../../utils/helpers";
+import { handleInitialData } from "../../actions/shared";
 
 const Question = (props) => {
   const {

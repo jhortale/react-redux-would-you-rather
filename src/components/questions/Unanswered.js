@@ -9,12 +9,12 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import Typography from "@material-ui/core/Typography";
+
 import Button from "@material-ui/core/Button";
 
-import { handleQuestionAnswer } from "../actions/questions";
+import { handleQuestionAnswer } from "../../actions/questions";
 
-import { formatQuestion } from "../utils/helpers";
+import { formatQuestion } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,9 +66,8 @@ const Unanswered = ({
       <CardMedia className={classes.cover} image={avatar} title="Avatar" />
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            {name} Asks:
-          </Typography>
+          <p>{name} Asks:</p>
+
           <form method="post" onSubmit={(e) => handleSubmit(e)}>
             <FormControl component="fieldset">
               <FormLabel component="legend">Would You Rather...</FormLabel>
