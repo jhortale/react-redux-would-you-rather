@@ -28,23 +28,21 @@ const App = ({ dispatch, loading }) => {
       <LoadingBar />
       <CssBaseline />
       <Container maxWidth="sm">
-        <Switch>
-          {loading ? (
-            <Route exact path="/" component={Login} />
-          ) : (
-            <Fragment>
-              <Header title="Would You Rather...?" sections={sections} />
-              <Switch>
-                <Route exact path="/" component={Dashboard} />
-                <Route path="/add" component={NewQuestion} />
-                <Route path="/leaderboard" component={LeaderBoard} />
-                <Route exact path="/questions/:id" component={Question} />
-                <Route path="/questions/" component={NotFound} />
-              </Switch>
-            </Fragment>
-          )}
-          <Route path="/" component={NotFound} />
-        </Switch>
+        {/* <Switch> */}
+        {loading ? (
+          <Route path="/" component={Login} />
+        ) : (
+          <Fragment>
+            <Header title="Would You Rather...?" sections={sections} />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={LeaderBoard} />
+              <Route path="/questions/:id" component={Question} />
+              <Route component={NotFound} />
+            </Switch>
+          </Fragment>
+        )}
       </Container>
     </Router>
   );

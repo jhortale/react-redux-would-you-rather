@@ -4,16 +4,21 @@ import Answered from "./Answered";
 import Unanswered from "./Unanswered";
 import { formatQuestion } from "../../utils/helpers";
 import { handleInitialData } from "../../actions/shared";
+import NotFound from "../layout/NotFound";
 
 const Question = (props) => {
   const {
-    question: { id, hasVoted },
+    question: { hasVoted },
+    id,
     dispatch,
+    isWrongID,
   } = props;
 
   useEffect(() => {
     dispatch(handleInitialData());
   }, [hasVoted, dispatch]);
+
+  if (isWrongID) return <NotFound />;
 
   return (
     <Fragment>
@@ -25,8 +30,15 @@ const Question = (props) => {
 const mapStateToProps = ({ authedUser, users, questions }, props) => {
   const { id } = props.match.params;
   const question = questions[id];
+  const isWrongID = question === undefined;
+  console.log(isWrongID);
   return {
-    question: formatQuestion(question, users[question.author], authedUser),
+    question:
+      question === undefined
+        ? { hasVoted: "" }
+        : formatQuestion(question, users[question.author], authedUser),
+    id,
+    isWrongID,
   };
 };
 

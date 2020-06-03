@@ -13,7 +13,7 @@ The application was developed in React, Redux and React-Router-Dom using Materia
 Clone or fork this repository and install the dependencies running the code below:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Run

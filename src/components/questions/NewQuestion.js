@@ -114,7 +114,8 @@ const NewQuestion = ({ dispatch }) => {
           <Button
             disabled={
               questions.optionOneText.length >= 3 &&
-              questions.optionTwoText.length >= 3
+              questions.optionTwoText.length >= 3 &&
+              questions.optionOneText !== questions.optionTwoText
                 ? false
                 : true
             }

@@ -45,7 +45,7 @@ function NotFound() {
           Sorry, this page does not exist
         </Typography>
         <Button className={classes.submit} onClick={() => history.push("/")}>
-          Back to Login
+          Back
         </Button>
       </div>
     </Container>
