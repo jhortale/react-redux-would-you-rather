@@ -26,23 +26,26 @@ const App = ({ dispatch, loading }) => {
   return (
     <Router>
       <LoadingBar />
-      {loading ? (
-        <Route exact path="/" component={Login} />
-      ) : (
-        <Fragment>
-          <CssBaseline />
-          <Container maxWidth="sm">
-            <Header title="Would You Rather...?" sections={sections} />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/add" component={NewQuestion} />
-              <Route path="/leaderboard" component={LeaderBoard} />
-              <Route path="/questions/:id" component={Question} />
-              <Route component={NotFound} />
-            </Switch>
-          </Container>
-        </Fragment>
-      )}
+      <CssBaseline />
+      <Container maxWidth="sm">
+        <Switch>
+          {loading ? (
+            <Route exact path="/" component={Login} />
+          ) : (
+            <Fragment>
+              <Header title="Would You Rather...?" sections={sections} />
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route path="/add" component={NewQuestion} />
+                <Route path="/leaderboard" component={LeaderBoard} />
+                <Route exact path="/questions/:id" component={Question} />
+                <Route path="/questions/" component={NotFound} />
+              </Switch>
+            </Fragment>
+          )}
+          <Route path="/" component={NotFound} />
+        </Switch>
+      </Container>
     </Router>
   );
 };
