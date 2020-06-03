@@ -1,7 +1,7 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import { Box, Card } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
@@ -50,10 +50,10 @@ const LeaderCard = (props) => {
           <p>Questions: {numQuestions}</p>
 
           <p>Answers: {numAnswers}</p>
+          <p>
+            Score: <strong>{score}</strong>
+          </p>
         </CardContent>
-      </div>
-      <div>
-        <p>Score: {score}</p>
       </div>
     </Card>
   );
