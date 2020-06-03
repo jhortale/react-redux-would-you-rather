@@ -1,9 +1,7 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Card } from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+import { Card, CardContent, CardMedia } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   cover: {
-    width: 151,
+    width: 180,
   },
   controls: {
     display: "flex",
@@ -25,9 +23,15 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   },
-  playIcon: {
-    height: 38,
-    width: 38,
+  score: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  box: {
+    width: 100,
+    height: 100,
+    flex: "1 0 auto",
+    alignItems: "center",
   },
 }));
 
@@ -38,21 +42,13 @@ const LeaderCard = (props) => {
 
   return (
     <Card className={classes.root} spacing={3}>
-      <CardMedia
-        className={classes.cover}
-        image={avatar}
-        title="Live from space album cover"
-      />
+      <CardMedia className={classes.cover} image={avatar} title="Avatar" />
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <p>{name}</p>
-
           <p>Questions: {numQuestions}</p>
-
           <p>Answers: {numAnswers}</p>
-          <p>
-            Score: <strong>{score}</strong>
-          </p>
+          <p>Score: {score}</p>
         </CardContent>
       </div>
     </Card>

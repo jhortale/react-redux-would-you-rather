@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-
-import Button from "@material-ui/core/Button";
-
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  Button,
+} from "@material-ui/core";
 import { handleQuestionAnswer } from "../../actions/questions";
-
 import { formatQuestion } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   cover: {
-    width: 151,
+    width: 190,
   },
   controls: {
     display: "flex",

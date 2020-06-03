@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { handleInitialData } from "./actions/shared";
-import Login from "./components/auth/Login";
+import Login from "./components/layout/Login";
 import Header from "./components/layout/Header";
 import Dashboard from "./components/questions/Tabs";
 import NewQuestion from "./components/questions/NewQuestion";

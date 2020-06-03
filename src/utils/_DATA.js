@@ -2,7 +2,8 @@ let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
-    avatarURL: "https://avatars.dicebear.com/api/female/sarah-edo.svg",
+    avatarURL:
+      "https://avataaars.io/?avatarStyle=Circle&topType=LongHairDreads&accessoriesType=Blank&hairColor=Platinum&facialHairType=Blank&facialHairColor=Platinum&clotheType=ShirtCrewNeck&clotheColor=Pink&eyeType=Wink&eyebrowType=Default&mouthType=Smile&skinColor=Tanned",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -14,7 +15,8 @@ let users = {
   tylermcginnis: {
     id: "tylermcginnis",
     name: "Tyler McGinnis",
-    avatarURL: "https://avatars.dicebear.com/api/male/Tyler-McGinnis.svg",
+    avatarURL:
+      "https://avataaars.io/?avatarStyle=Circle&topType=Eyepatch&accessoriesType=Kurt&hatColor=White&facialHairType=BeardMagestic&facialHairColor=Platinum&clotheType=Overall&clotheColor=PastelOrange&eyeType=Hearts&eyebrowType=UpDown&mouthType=Disbelief&skinColor=Light",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo",
@@ -24,7 +26,8 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "https://avatars.dicebear.com/api/male/john-doe.svg",
+    avatarURL:
+      "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShaggyMullet&accessoriesType=Wayfarers&hairColor=Black&facialHairType=MoustacheFancy&facialHairColor=Red&clotheType=CollarSweater&clotheColor=Black&eyeType=Hearts&eyebrowType=RaisedExcitedNatural&mouthType=Tongue&skinColor=Tanned",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
