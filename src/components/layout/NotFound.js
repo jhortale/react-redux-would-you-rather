@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { useHistory } from "react-router-dom";
-
-import { login } from "../../actions/authedUser";
 
 import {
   Avatar,
@@ -31,13 +28,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NotFound() {
-  const [authUser, setAuthUser] = useState(null);
   const history = useHistory();
-
   const classes = useStyles();
-  // if (!loading) {
-  //   history.push("/dashboard");
-  // }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
